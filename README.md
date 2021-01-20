@@ -72,7 +72,7 @@ classDiagram
     }
     class Membership{
       -StringProperty expirationdate
-      +renewmembership(string update)
+      +renewMembership(string update)
     }
 
     class MemberDataModel{
