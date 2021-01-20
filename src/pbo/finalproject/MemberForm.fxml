@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pbo.finalproject.MemberFormController">
+   <children>
+      <MenuBar layoutY="1.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane layoutY="26.0" minWidth="1280.0" prefHeight="693.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Individual">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #343a40;">
+                     <children>
+                        <AnchorPane minWidth="264.0" prefHeight="664.0" prefWidth="309.0">
+                           <children>
+                              <VBox prefHeight="663.0" prefWidth="305.0" style="-fx-background-color: #14213d;">
+                                 <children>
+                                    <AnchorPane prefHeight="666.0" prefWidth="305.0">
+                                       <children>
+                                          <Label layoutX="16.0" layoutY="7.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                          <TextField layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
+                                          <TextField layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
+                                          <DatePicker layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                                          <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="16.0" layoutY="375.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="16.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <DatePicker layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="Tanggal Lahir" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="309.0" prefHeight="424.0" prefWidth="952.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <TableView layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                                <columns>
+                                  <TableColumn prefWidth="115.888916015625" text="ID Member" />
+                                  <TableColumn prefWidth="223.0" text="Nama Lengkap" />
+                                    <TableColumn prefWidth="208.888916015625" text="No. Handphone" />
+                                    <TableColumn prefWidth="157.6666259765625" text="Tanggal Lahir" />
+                                    <TableColumn prefWidth="218.3333740234375" text="Expiration Date" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="330.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
+                           <children>
+                              <TableView layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
+                                <columns>
+                                  <TableColumn prefWidth="97.22225952148438" text="ID Member" />
+                                  <TableColumn prefWidth="119.66665649414062" text="Nama Lengkap" />
+                                    <TableColumn prefWidth="112.0" text="Exp. Date" />
+                                </columns>
+                              </TableView>
+                              <TextField layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <DatePicker layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                              <Button layoutX="392.0" layoutY="120.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Apartement Owner">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #343a40;">
+                     <children>
+                        <VBox prefHeight="663.0" prefWidth="305.0" style="-fx-background-color: #14213d;">
+                           <children>
+                              <AnchorPane prefHeight="666.0" prefWidth="305.0">
+                                 <children>
+                                    <Label layoutX="16.0" layoutY="7.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                    <TextField layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
+                                    <TextField layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
+                                    <DatePicker layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                                    <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="16.0" layoutY="375.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="16.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Apartmen" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <AnchorPane layoutX="305.0" prefHeight="424.0" prefWidth="952.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Apartment Owner" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <TableView layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                                 <columns>
+                                    <TableColumn prefWidth="115.888916015625" text="ID Member" />
+                                    <TableColumn prefWidth="223.0" text="Nama Lengkap" />
+                                    <TableColumn prefWidth="208.888916015625" text="No. Handphone" />
+                                    <TableColumn prefWidth="157.6666259765625" text="No. Apartmen" />
+                                    <TableColumn prefWidth="218.3333740234375" text="Expiration Date" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="328.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
+                           <children>
+                              <TableView layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
+                                 <columns>
+                                    <TableColumn prefWidth="97.22225952148438" text="ID Member" />
+                                    <TableColumn prefWidth="119.66665649414062" text="Nama Lengkap" />
+                                    <TableColumn prefWidth="112.0" text="Exp. Date" />
+                                 </columns>
+                              </TableView>
+                              <TextField layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <DatePicker layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                              <Button layoutX="392.0" layoutY="120.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
