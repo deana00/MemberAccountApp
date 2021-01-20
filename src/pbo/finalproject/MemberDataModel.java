@@ -22,12 +22,12 @@ public class MemberDataModel {
         this.conn = DBConnection.getConnection(driver);
     }
     public void addMember(Individual holder) throws SQLException{
-        String insertMember = "INSERT INTO member (id, name, phone_number)"
+        String insertMember = "INSERT INTO member (id, name, phonenum)"
                 + " VALUES (?,?,?)";
         String insertIndividual = "INSERT INTO individual (id, birthdate)"
                 + " VALUES (?,?)";
-        String insertMembership = "INSERT INTO membership (acc_number, balance, id)"
-                + " VALUES (?,?,?)";
+        String insertMembership = "INSERT INTO membership (id, expiration_date)"
+                + " VALUES (?,?)";
         PreparedStatement stmtMember = conn.prepareStatement(insertMember);
         stmtMember.setInt(1, holder.getId());
         stmtMember.setString(2, holder.getName());
