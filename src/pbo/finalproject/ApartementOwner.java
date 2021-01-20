@@ -15,12 +15,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class ApartementOwner extends Member {
     IntegerProperty apartementnum;
 
-    public ApartementOwner(int id, String name, int phonenum, int apartementnum) {
-        super(id, name, phonenum);
+    public ApartementOwner(int id, String name, int phonenum, int apartementnum, Membership membership) {
+        super(id, name, phonenum, membership);
         this.apartementnum = new SimpleIntegerProperty(apartementnum);
     }
 
-    public int getApartementnum() {
+    public int getApartementnum(){
         return apartementnum.get();
     }
 
