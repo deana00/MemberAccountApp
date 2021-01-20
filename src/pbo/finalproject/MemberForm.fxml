@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pbo.finalproject.MemberFormController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pbo.finalproject.MemberFormController">
    <children>
       <MenuBar layoutY="1.0">
         <menus>
@@ -53,26 +53,26 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Label>
-                                          <TextField layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                                          <TextField layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
-                                          <TextField layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
-                                          <DatePicker layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                                          <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                          <TextField fx:id="tfIDIndividual" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                          <TextField fx:id="tfNamaLengkapIndividu" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
+                                          <TextField fx:id="tfPhoneNumIndividu" layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
+                                          <DatePicker fx:id="dpExpDateIndividu" layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                                          <Button fx:id="btnSaveIndividu" layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveIndividu" prefHeight="33.0" prefWidth="275.0" text="Save">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button layoutX="16.0" layoutY="375.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                          <Button fx:id="btnReloadIndividu" layoutX="16.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleReloadIndividu" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button layoutX="16.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                          <Button fx:id="btnClearFormIndividu" layoutX="16.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleClearIndividu" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <DatePicker layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="Tanggal Lahir" />
+                                          <DatePicker fx:id="dpBirthdateIndividu" layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="Tanggal Lahir" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -86,29 +86,29 @@
                                     <Font size="21.0" />
                                  </font>
                               </Label>
-                              <TableView layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                              <TableView fx:id="tblMemberIndividu" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
                                 <columns>
-                                  <TableColumn prefWidth="115.888916015625" text="ID Member" />
-                                  <TableColumn prefWidth="223.0" text="Nama Lengkap" />
-                                    <TableColumn prefWidth="208.888916015625" text="No. Handphone" />
-                                    <TableColumn prefWidth="157.6666259765625" text="Tanggal Lahir" />
-                                    <TableColumn prefWidth="218.3333740234375" text="Expiration Date" />
+                                  <TableColumn fx:id="colIDIIndividu" prefWidth="115.888916015625" text="ID Member" />
+                                  <TableColumn fx:id="colNamaLengkapIndividu" prefWidth="223.0" text="Nama Lengkap" />
+                                    <TableColumn fx:id="colPhoneNumIndividu" prefWidth="208.888916015625" text="No. Handphone" />
+                                    <TableColumn fx:id="colBirthdateIndividu" prefWidth="157.6666259765625" text="Tanggal Lahir" />
+                                    <TableColumn fx:id="colExpDateIndividu" prefWidth="218.3333740234375" text="Expiration Date" />
                                 </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="330.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
                            <children>
-                              <TableView layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
+                              <TableView fx:id="tblShowIndividu" layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
                                 <columns>
-                                  <TableColumn prefWidth="97.22225952148438" text="ID Member" />
-                                  <TableColumn prefWidth="119.66665649414062" text="Nama Lengkap" />
-                                    <TableColumn prefWidth="112.0" text="Exp. Date" />
+                                  <TableColumn fx:id="colShowIDIndividu" prefWidth="97.22225952148438" text="ID Member" />
+                                  <TableColumn fx:id="colShowNamaIndividu" prefWidth="119.66665649414062" text="Nama Lengkap" />
+                                    <TableColumn fx:id="colShowExpDateIndividu" prefWidth="112.0" text="Exp. Date" />
                                 </columns>
                               </TableView>
-                              <TextField layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                              <DatePicker layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button layoutX="392.0" layoutY="120.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <TextField fx:id="tfIDIndividu2" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <DatePicker fx:id="dpExpDateIndividu2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Save">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -132,26 +132,26 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                                    <TextField layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
-                                    <TextField layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
-                                    <DatePicker layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                                    <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                    <TextField fx:id="tfIDOwner" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                    <TextField fx:id="tfNameOwner" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
+                                    <TextField fx:id="tfPhoneNumOwner" layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
+                                    <DatePicker fx:id="dpExpDateOwner" layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                                    <Button fx:id="btnSaveOwner" layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveOwner" prefHeight="33.0" prefWidth="275.0" text="Save">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="16.0" layoutY="375.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                    <Button fx:id="btnReloadOwner" layoutX="16.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleReloadOwner" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="16.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                    <Button fx:id="btnClearOwner" layoutX="16.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleClearOwner" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <TextField layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Apartmen" />
+                                    <TextField fx:id="tfApartmentNumOwner" layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Apartmen" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -163,29 +163,29 @@
                                     <Font size="21.0" />
                                  </font>
                               </Label>
-                              <TableView layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                              <TableView fx:id="tblMemberOwner" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
                                  <columns>
-                                    <TableColumn prefWidth="115.888916015625" text="ID Member" />
-                                    <TableColumn prefWidth="223.0" text="Nama Lengkap" />
-                                    <TableColumn prefWidth="208.888916015625" text="No. Handphone" />
-                                    <TableColumn prefWidth="157.6666259765625" text="No. Apartmen" />
-                                    <TableColumn prefWidth="218.3333740234375" text="Expiration Date" />
+                                    <TableColumn fx:id="colIDOwner" prefWidth="115.888916015625" text="ID Member" />
+                                    <TableColumn fx:id="colNameOwner" prefWidth="223.0" text="Nama Lengkap" />
+                                    <TableColumn fx:id="colPhoneNumOwner" prefWidth="208.888916015625" text="No. Handphone" />
+                                    <TableColumn fx:id="colApartmentNumOwner" prefWidth="157.6666259765625" text="No. Apartmen" />
+                                    <TableColumn fx:id="colExpDateOwner" prefWidth="218.3333740234375" text="Expiration Date" />
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="328.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
                            <children>
-                              <TableView layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
+                              <TableView fx:id="tblShowOwner" layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
                                  <columns>
-                                    <TableColumn prefWidth="97.22225952148438" text="ID Member" />
-                                    <TableColumn prefWidth="119.66665649414062" text="Nama Lengkap" />
-                                    <TableColumn prefWidth="112.0" text="Exp. Date" />
+                                    <TableColumn fx:id="colShowIDOwner" prefWidth="97.22225952148438" text="ID Member" />
+                                    <TableColumn fx:id="colShowNameOwner2" prefWidth="119.66665649414062" text="Nama Lengkap" />
+                                    <TableColumn fx:id="tblShowExpDateOwner2" prefWidth="112.0" text="Exp. Date" />
                                  </columns>
                               </TableView>
-                              <TextField layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                              <DatePicker layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button layoutX="392.0" layoutY="120.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <TextField fx:id="tfIDOwner2" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <DatePicker fx:id="dpExpDateOwner2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
+                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Save">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -198,5 +198,7 @@
           </Tab>
         </tabs>
       </TabPane>
+      <Label layoutX="1049.0" layoutY="6.0" text="DB Status :" />
+      <Label fx:id="labelDBStatus" layoutX="1122.0" layoutY="6.0" />
    </children>
 </AnchorPane>
