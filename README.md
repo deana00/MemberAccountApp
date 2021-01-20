@@ -17,7 +17,7 @@ classDiagram
     }
     class Membership{
       +string expirationdate
-      +payment(double cost)
+      +renewMembership(String update)
     }
             
 ```
@@ -72,7 +72,7 @@ classDiagram
     }
     class Membership{
       -StringProperty expirationdate
-      +renewMembership(string update)
+      +renewMembership(String update)
     }
 
     class MemberDataModel{
