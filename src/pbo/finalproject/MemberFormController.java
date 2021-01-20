@@ -175,7 +175,22 @@ public class MemberFormController implements Initializable {
 
     @FXML
     void handleSaveIndividu(ActionEvent event) {
-
+        LocalDate BD = dpBirthdateIndividu.getValue();
+        String birthdate = String.format("%d-%02d-%02d", BD.getYear(),BD.getMonthValue(),BD.getDayOfMonth());
+        LocalDate EXP = dpExpDateIndividu.getValue();
+        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(),EXP.getMonthValue(),EXP.getDayOfMonth());
+        Individual member = new Individual(Integer.parseInt(tfIDIndividual.getText()),
+                tfNamaLengkapIndividu.getText(), 
+                Integer.parseInt(tfPhoneNumIndividu.getText()),
+                birthdate,
+                new Membership(ExpirationDate));
+        try {
+            MDM.addMember(member);
+            labelSetStatusIndividual.setText("Berhasil Menambah Member");
+        } catch (SQLException ex) {
+            labelSetStatusIndividual.setText("Gagal Menambah Member");
+            Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -195,7 +210,17 @@ public class MemberFormController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            MDM = new MemberDataModel("MYSQL");
+            labelDBStatus.setText(MDM.conn==null?"Not Connected":"Connected");
+            tfIDIndividual.setText(""+MDM.nextMemberID());
+            dpExpDateIndividu.setValue(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), 
+                    LocalDate.now().getDayOfMonth()));
+            dpBirthdateIndividu.setValue(LocalDate.of(LocalDate.now().getYear()-27, LocalDate.now().getMonthValue(), 
+                    LocalDate.now().getDayOfMonth()));
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
 }
