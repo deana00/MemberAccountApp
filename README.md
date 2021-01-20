@@ -72,16 +72,17 @@ classDiagram
     }
     class Membership{
       -StringProperty expirationdate
-      +payment(double cost)
+      +renewmembership(string update)
     }
 
     class MemberDataModel{
         Connection conn
         addMember()
-        addMembership()
+        getMemberships()
         getIndividuals()
         getApartementOwners()
         nextMemberID()
+        nextMembershipNumber
     }
 
     class MemberFormController{
