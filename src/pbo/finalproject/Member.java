@@ -18,11 +18,13 @@ public abstract class Member {
      private IntegerProperty id;
      private StringProperty name;
      private IntegerProperty phonenum;
+     private Membership membership;
 
-    public Member(int id, String name, int phonenum) {
+    public Member(int id, String name, int phonenum, Membership membership) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.phonenum = new SimpleIntegerProperty(phonenum);
+        this.membership = membership;
     }
 
     public int getId() {
@@ -47,6 +49,14 @@ public abstract class Member {
 
     public void setPhonenum(int phonenum) {
         this.phonenum = new SimpleIntegerProperty(phonenum);
+    }
+     
+    public void setMembership(Membership membership){
+        this.membership = membership;
+    }
+    
+    public Membership getMembership(){
+        return membership;
     }
      
     public IntegerProperty idProperty() {
