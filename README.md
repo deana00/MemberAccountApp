@@ -79,10 +79,8 @@ classDiagram
         Connection conn
         addMember()
         getMemberships()
-        getIndividuals()
-        getApartementOwners()
         nextMemberID()
-        nextMembershipNumber
+        nextMembershipNumber()
     }
 
     class MemberFormController{
