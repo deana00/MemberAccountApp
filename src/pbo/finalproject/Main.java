@@ -23,10 +23,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MemberForm.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Member Account App");
         stage.setScene(scene);
         stage.show();
     }

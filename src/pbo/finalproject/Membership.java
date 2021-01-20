@@ -27,5 +27,10 @@ public class Membership {
         this.expirationDate = new SimpleStringProperty(expirationDate);
     }
     
-    
+    public StringProperty expirationDateProperty() {
+        return expirationDate;
+    } 
+    public void renewMembership(String update) {
+        this.expirationDate.set(update);
+    }
 }

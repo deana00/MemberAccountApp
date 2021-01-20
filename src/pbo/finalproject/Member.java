@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
  *
  * @author CIKA
  */
-public class Member {
+public abstract class Member {
      private IntegerProperty id;
      private StringProperty name;
      private IntegerProperty phonenum;
