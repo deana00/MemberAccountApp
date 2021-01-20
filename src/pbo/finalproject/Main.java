@@ -35,16 +35,6 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            //        launch(args
-            if (null != DBConnection.getConnection("MYSQL")) {
-                System.out.println("Success!");
-            } else {
-                System.out.println("Failed!");
-            }
-//            DBConnection.getConnection("MYSQL");
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        launch(args);
     }
 }
