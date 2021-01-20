@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="MemberAccountApp.jar" size="11843" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
+    <jar href="MemberAccountApp.jar" size="685178" download="eager" />
+    <jar href="lib\sqlite-jdbc-3.34.0.jar" size="7296329" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="MemberAccountApp" >
     <param name="requiredFXVersion" value="8.0+"/>

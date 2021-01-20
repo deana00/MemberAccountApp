@@ -5,15 +5,12 @@
  */
 package pbo.finalproject;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import pbo.db.DBConnection;
 
 /**
  *
@@ -26,6 +23,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("MemberForm.fxml"));
         
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("/pbo/icon/colored-unila-logo.png"));
         stage.setTitle("Member Account App");
         stage.setScene(scene);
         stage.show();

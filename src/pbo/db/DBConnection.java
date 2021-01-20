@@ -20,7 +20,7 @@ public class DBConnection {
 
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    // harus buat database terlebih dahulu dengan nama ' member_account_app'
+    // harus buat database terlebih dahulu dengan nama ' member_account'
     private static final String DB = "member_account_app";
     private static final String MYCONN = "jdbc:mysql://localhost/" + DB;
 
@@ -37,7 +37,7 @@ public class DBConnection {
     }
 
     public static void createTable(Connection con, String driver) throws SQLException {
-        String sqlCommand ="CREATE TABLE IF NOT EXISTS `member` ("
+        String sqlCommand = "CREATE TABLE IF NOT EXISTS `member` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `name` varchar(100) NOT NULL,"
                 + "    `phonenum` int(15) NOT NULL,"
