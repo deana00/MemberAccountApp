@@ -6,7 +6,9 @@
 package pbo.finalproject;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -17,13 +19,13 @@ import javafx.beans.property.StringProperty;
 public abstract class Member {
      private IntegerProperty id;
      private StringProperty name;
-     private IntegerProperty phonenum;
+     private LongProperty phonenum;
      private Membership membership;
 
-    public Member(int id, String name, int phonenum, Membership membership) {
+    public Member(int id, String name, long phonenum, Membership membership) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
-        this.phonenum = new SimpleIntegerProperty(phonenum);
+        this.phonenum = new SimpleLongProperty(phonenum);
         this.membership = membership;
     }
 
@@ -43,12 +45,12 @@ public abstract class Member {
         this.name = new SimpleStringProperty(name);
     }
 
-    public int getPhonenum() {
+    public long getPhonenum() {
         return phonenum.get();
     }
 
-    public void setPhonenum(int phonenum) {
-        this.phonenum = new SimpleIntegerProperty(phonenum);
+    public void setPhonenum(long phonenum) {
+        this.phonenum = new SimpleLongProperty(phonenum);
     }
      
     public void setMembership(Membership membership){
@@ -67,7 +69,7 @@ public abstract class Member {
         return name;
     }
 
-    public IntegerProperty phonenumProperty() {
+    public LongProperty phonenumProperty() {
         return phonenum;
     }
 }

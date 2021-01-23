@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
 public class Individual extends Member {
     StringProperty birthdate;
 
-    public Individual(int id, String name, int phonenum, String birthdate, Membership membership) {
+    public Individual(int id, String name, long phonenum, String birthdate, Membership membership) {
         super(id, name, phonenum, membership);
         this.birthdate = new SimpleStringProperty(birthdate);
     }

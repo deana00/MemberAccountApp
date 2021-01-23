@@ -18,8 +18,8 @@ import javafx.collections.ObservableList;
 public class MemberDataModel {
     public final Connection conn;
 
-    public MemberDataModel(String driver) throws SQLException {
-        this.conn = DBConnection.getConnection(driver);
+    public MemberDataModel() throws SQLException {
+        this.conn = DBConnection.getConnection();
     }
     public void addMember(Individual holder) throws SQLException{
         String insertMember = "INSERT INTO member (id, name, phonenum)"
@@ -31,7 +31,7 @@ public class MemberDataModel {
         PreparedStatement stmtMember = conn.prepareStatement(insertMember);
         stmtMember.setInt(1, holder.getId());
         stmtMember.setString(2, holder.getName());
-        stmtMember.setInt(3, holder.getPhonenum());
+        stmtMember.setLong(3, holder.getPhonenum());
         stmtMember.execute();
         
         PreparedStatement stmtIndividual = conn.prepareStatement(insertIndividual);
@@ -43,8 +43,8 @@ public class MemberDataModel {
         stmtMembership.setInt(1, holder.getId());
         stmtMembership.setString(2, holder.getMembership().getExpirationDate());
         stmtMembership.execute();
-        
     }
+    
     public void addMember(ApartementOwner holder) throws SQLException{
         String insertMember = "INSERT INTO Member (id, name, address)"
                 + " VALUES (?,?,?)";
@@ -55,7 +55,7 @@ public class MemberDataModel {
         PreparedStatement stmtMember = conn.prepareStatement(insertMember);
         stmtMember.setInt(1, holder.getId());
         stmtMember.setString(2, holder.getName());
-        stmtMember.setInt(3, holder.getPhonenum());
+        stmtMember.setLong(3, holder.getPhonenum());
         stmtMember.execute();
         
         PreparedStatement stmtIndividual = conn.prepareStatement(insertApartementOwner);
@@ -69,7 +69,11 @@ public class MemberDataModel {
         stmtMembership.execute();
     }
     
-    
+//    public ObservableList <Individual> getIndividual(int id) {
+//        ObservableList <Individual> akun = FXCollections.observableArrayList();
+//        String sqlCommand = "SELECT 'id', '"
+//    }
+//    
     public ObservableList<Membership> getMemberships(int holderID){
         ObservableList<Membership> data = FXCollections.observableArrayList();
         String sql="SELECT `acc_number`, `balance` "

@@ -18,48 +18,45 @@ import java.util.logging.Logger;
  */
 public class DBConnection {
 
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-    // harus buat database terlebih dahulu dengan nama ' member_account'
-    private static final String DB = "member_account_app";
-    private static final String MYCONN = "jdbc:mysql://localhost/" + DB;
+    private static final String SQCONN = "jdbc:sqlite:"
+            + "C:/Users/CIKA/Documents/NetBeansProjects/MemberAccountApp/member_account.sqlite";
 
-    public static Connection getConnection(String driver) throws SQLException {
+    public static Connection getConnection() throws SQLException {
         Connection conn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(MYCONN, USER, PASSWORD);
-            createTable(conn, driver);
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection(SQCONN);
+            createTable(conn);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return conn;
     }
 
-    public static void createTable(Connection con, String driver) throws SQLException {
+    public static void createTable(Connection con) throws SQLException {
         String sqlCommand = "CREATE TABLE IF NOT EXISTS `member` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `name` varchar(100) NOT NULL,"
                 + "    `phonenum` int(15) NOT NULL,"
                 + "    PRIMARY KEY (`id`)"
-                + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
+                + ");"
                 + "CREATE TABLE IF NOT EXISTS `apartment_owner` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `apartement_num` int(4) NOT NULL,"
                 + "    PRIMARY KEY (`id`),"
-                + "    CONSTRAINT `AO_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE"
-                + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
+                + "    CONSTRAINT `AO_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT"
+                + ");"
                 + "CREATE TABLE IF NOT EXISTS `individual` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `birthdate` date NOT NULL,"
                 + "    PRIMARY KEY (`id`),"
-                + "    CONSTRAINT `Ind_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE"
-                + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
+                + "    CONSTRAINT `Ind_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT"
+                + ");"
                 + "CREATE TABLE IF NOT EXISTS `membership` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `expiration_date` date NOT NULL,"
-                + "    CONSTRAINT `memship_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE"
-                + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                + "    CONSTRAINT `memship_id` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT"
+                + ");";
         String sqlCom[] = sqlCommand.split(";");
         int i = 1;
         for (String sql : sqlCom) {

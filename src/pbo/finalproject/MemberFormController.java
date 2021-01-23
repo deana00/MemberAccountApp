@@ -158,7 +158,12 @@ public class MemberFormController implements Initializable {
 
     @FXML
     private Label labelDBStatus;
+    
+    @FXML
+    private Label labelSetStatusIndividual;
 
+    MemberDataModel MDM;
+    
     @FXML
     void handleClearIndividu(ActionEvent event) {
 
@@ -171,7 +176,16 @@ public class MemberFormController implements Initializable {
 
     @FXML
     void handleReloadIndividu(ActionEvent event) {
-
+//        ObservableList<Individual> data = MDM.getIndividual();
+//        idColumn.setCellValueFactory(new PropertyValueFactory<>("holderID"));
+//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+//        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
+//        bdColumn.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+//        numAccColumn.setCellValueFactory(new PropertyValueFactory<>("numAccounts"));
+//        tblAccountHolder.setItems(null);
+//        tblAccountHolder.setItems(data);
+//        btnAddAccount.setDisable(true);
     }
 
     @FXML
@@ -187,12 +201,13 @@ public class MemberFormController implements Initializable {
         String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(),EXP.getMonthValue(),EXP.getDayOfMonth());
         Individual member = new Individual(Integer.parseInt(tfIDIndividual.getText()),
                 tfNamaLengkapIndividu.getText(), 
-                Integer.parseInt(tfPhoneNumIndividu.getText()),
+                Long.parseLong(tfPhoneNumIndividu.getText()),
                 birthdate,
                 new Membership(ExpirationDate));
         try {
             MDM.addMember(member);
             labelSetStatusIndividual.setText("Berhasil Menambah Member");
+            btnReloadIndividu.fire();
         } catch (SQLException ex) {
             labelSetStatusIndividual.setText("Gagal Menambah Member");
             Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
@@ -217,7 +232,7 @@ public class MemberFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            MDM = new MemberDataModel("MYSQL");
+            MDM = new MemberDataModel();
             labelDBStatus.setText(MDM.conn==null?"Not Connected":"Connected");
             tfIDIndividual.setText(""+MDM.nextMemberID());
             dpExpDateIndividu.setValue(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), 
