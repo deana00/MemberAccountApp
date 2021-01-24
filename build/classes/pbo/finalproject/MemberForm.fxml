@@ -21,17 +21,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="file_close" mnemonicParsing="false" onAction="#handleCloseProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="edit_delete" mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="help_about" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>
@@ -46,33 +46,37 @@
                            <children>
                               <VBox prefHeight="663.0" prefWidth="305.0" style="-fx-background-color: #14213d;">
                                  <children>
-                                    <AnchorPane prefHeight="666.0" prefWidth="305.0">
+                                    <AnchorPane prefHeight="692.0" prefWidth="305.0">
                                        <children>
-                                          <Label layoutX="16.0" layoutY="7.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                          <Label alignment="CENTER" layoutX="15.0" layoutY="11.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
                                              <font>
-                                                <Font size="30.0" />
+                                                <Font name="Goudy Old Style" size="30.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfIDIndividual" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                          <TextField fx:id="tfIDIndividual" disable="true" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                                           <TextField fx:id="tfNamaLengkapIndividu" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
                                           <TextField fx:id="tfPhoneNumIndividu" layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
                                           <DatePicker fx:id="dpExpDateIndividu" layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                                          <Button fx:id="btnSaveIndividu" layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveIndividu" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                          <Button fx:id="btnSaveIndividu" layoutX="16.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleSaveIndividu" prefHeight="33.0" prefWidth="275.0" text="Save">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="btnReloadIndividu" layoutX="16.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleReloadIndividu" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                          <Button fx:id="btnReloadIndividu" layoutX="16.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleReloadIndividu" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="btnClearFormIndividu" layoutX="16.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleClearIndividu" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                          <Button fx:id="btnClearFormIndividu" layoutX="16.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleClearIndividu" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
                                           <DatePicker fx:id="dpBirthdateIndividu" layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="Tanggal Lahir" />
+                                          <Label fx:id="labelSetStatusIndividual" layoutX="19.0" layoutY="302.0" prefHeight="17.0" prefWidth="267.0" textFill="#e4e1e1">
+                                             <font>
+                                                <Font name="Palatino Linotype Bold Italic" size="12.0" />
+                                             </font></Label>
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -81,9 +85,9 @@
                         </AnchorPane>
                         <AnchorPane layoutX="309.0" prefHeight="424.0" prefWidth="952.0">
                            <children>
-                              <Label prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
+                              <Label layoutX="24.0" layoutY="6.0" prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font name="Palatino Linotype" size="21.0" />
                                  </font>
                               </Label>
                               <TableView fx:id="tblMemberIndividu" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
@@ -106,9 +110,9 @@
                                     <TableColumn fx:id="colShowExpDateIndividu" prefWidth="112.0" text="Exp. Date" />
                                 </columns>
                               </TableView>
-                              <TextField fx:id="tfIDIndividu2" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <TextField fx:id="tfIDIndividu2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                               <DatePicker fx:id="dpExpDateIndividu2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -132,26 +136,31 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="tfIDOwner" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                    <TextField fx:id="tfIDOwner" disable="true" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                                     <TextField fx:id="tfNameOwner" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
                                     <TextField fx:id="tfPhoneNumOwner" layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
                                     <DatePicker fx:id="dpExpDateOwner" layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                                    <Button fx:id="btnSaveOwner" layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveOwner" prefHeight="33.0" prefWidth="275.0" text="Save">
+                                    <Button fx:id="btnSaveOwner" layoutX="16.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleSaveOwner" prefHeight="33.0" prefWidth="275.0" text="Save">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnReloadOwner" layoutX="16.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleReloadOwner" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
+                                    <Button fx:id="btnReloadOwner" layoutX="16.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleReloadOwner" prefHeight="33.0" prefWidth="275.0" text="Reload Data Table">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnClearOwner" layoutX="16.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleClearOwner" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
+                                    <Button fx:id="btnClearOwner" layoutX="16.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleClearOwner" prefHeight="33.0" prefWidth="275.0" text="Clear Form">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
                                     <TextField fx:id="tfApartmentNumOwner" layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Apartmen" />
+                                    <Label fx:id="labelSetStatusOwner" layoutX="19.0" layoutY="303.0" prefHeight="17.0" prefWidth="267.0" textFill="#e4e1e1">
+                                       <font>
+                                          <Font name="Palatino Linotype Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
@@ -183,9 +192,9 @@
                                     <TableColumn fx:id="tblShowExpDateOwner2" prefWidth="112.0" text="Exp. Date" />
                                  </columns>
                               </TableView>
-                              <TextField fx:id="tfIDOwner2" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <TextField fx:id="tfIDOwner2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                               <DatePicker fx:id="dpExpDateOwner2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

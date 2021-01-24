@@ -15,7 +15,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class ApartementOwner extends Member {
     IntegerProperty apartementnum;
 
-    public ApartementOwner(int id, String name, int phonenum, int apartementnum, Membership membership) {
+    public ApartementOwner(int id, String name, long phonenum, int apartementnum, Membership membership) {
         super(id, name, phonenum, membership);
         this.apartementnum = new SimpleIntegerProperty(apartementnum);
     }

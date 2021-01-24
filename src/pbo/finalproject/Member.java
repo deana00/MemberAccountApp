@@ -5,6 +5,7 @@
  */
 package pbo.finalproject;
 
+import java.util.ArrayList;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -20,7 +21,7 @@ public abstract class Member {
      private IntegerProperty id;
      private StringProperty name;
      private LongProperty phonenum;
-     private Membership membership;
+     Membership membership;
 
     public Member(int id, String name, long phonenum, Membership membership) {
         this.id = new SimpleIntegerProperty(id);

@@ -21,17 +21,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="file_close" mnemonicParsing="false" onAction="#handleCloseProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="edit_delete" mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="help_about" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>
@@ -112,7 +112,7 @@
                               </TableView>
                               <TextField fx:id="tfIDIndividu2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                               <DatePicker fx:id="dpExpDateIndividu2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -136,7 +136,7 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="tfIDOwner" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                                    <TextField fx:id="tfIDOwner" disable="true" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                                     <TextField fx:id="tfNameOwner" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="275.0" promptText="Nama Lengkap" />
                                     <TextField fx:id="tfPhoneNumOwner" layoutX="15.0" layoutY="168.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Handphone" />
                                     <DatePicker fx:id="dpExpDateOwner" layoutX="15.0" layoutY="260.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
@@ -156,7 +156,7 @@
                                        </font>
                                     </Button>
                                     <TextField fx:id="tfApartmentNumOwner" layoutX="16.0" layoutY="213.0" prefHeight="33.0" prefWidth="275.0" promptText="No. Apartmen" />
-                                    <Label fx:id="labelSetStatusIndividual1" layoutX="19.0" layoutY="303.0" prefHeight="17.0" prefWidth="267.0" textFill="#e4e1e1">
+                                    <Label fx:id="labelSetStatusOwner" layoutX="19.0" layoutY="303.0" prefHeight="17.0" prefWidth="267.0" textFill="#e4e1e1">
                                        <font>
                                           <Font name="Palatino Linotype Bold Italic" size="12.0" />
                                        </font>
@@ -192,9 +192,9 @@
                                     <TableColumn fx:id="tblShowExpDateOwner2" prefWidth="112.0" text="Exp. Date" />
                                  </columns>
                               </TableView>
-                              <TextField fx:id="tfIDOwner2" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
+                              <TextField fx:id="tfIDOwner2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
                               <DatePicker fx:id="dpExpDateOwner2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Save">
+                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

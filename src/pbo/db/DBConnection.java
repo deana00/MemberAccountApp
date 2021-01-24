@@ -18,8 +18,7 @@ import java.util.logging.Logger;
  */
 public class DBConnection {
 
-    private static final String SQCONN = "jdbc:sqlite:"
-            + "C:/Users/CIKA/Documents/NetBeansProjects/MemberAccountApp/member_account.sqlite";
+    private static final String SQCONN = "jdbc:sqlite:member_account.sqlite";
 
     public static Connection getConnection() throws SQLException {
         Connection conn = null;
@@ -40,7 +39,7 @@ public class DBConnection {
                 + "    `phonenum` int(15) NOT NULL,"
                 + "    PRIMARY KEY (`id`)"
                 + ");"
-                + "CREATE TABLE IF NOT EXISTS `apartment_owner` ("
+                + "CREATE TABLE IF NOT EXISTS `apartement_owner` ("
                 + "    `id` int(4) NOT NULL,"
                 + "    `apartement_num` int(4) NOT NULL,"
                 + "    PRIMARY KEY (`id`),"

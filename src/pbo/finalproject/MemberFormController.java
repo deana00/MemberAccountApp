@@ -19,17 +19,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
  * @author CIKA
  */
 public class MemberFormController implements Initializable {
-    
 
+    @FXML
+    private MenuItem file_close;
+
+    @FXML
+    private MenuItem edit_delete;
+
+    @FXML
+    private MenuItem help_about;
+    
     @FXML
     private TextField tfIDIndividual;
 
@@ -55,34 +65,34 @@ public class MemberFormController implements Initializable {
     private DatePicker dpBirthdateIndividu;
 
     @FXML
-    private TableView<?> tblMemberIndividu;
+    private TableView<Individual> tblMemberIndividu;
 
     @FXML
-    private TableColumn<?, ?> colIDIIndividu;
+    private TableColumn<Individual, Integer> colIDIIndividu;
 
     @FXML
-    private TableColumn<?, ?> colNamaLengkapIndividu;
+    private TableColumn<Individual, String> colNamaLengkapIndividu;
 
     @FXML
-    private TableColumn<?, ?> colPhoneNumIndividu;
+    private TableColumn<Individual, Long> colPhoneNumIndividu;
 
     @FXML
-    private TableColumn<?, ?> colBirthdateIndividu;
+    private TableColumn<Individual, String> colBirthdateIndividu;
 
     @FXML
-    private TableColumn<?, ?> colExpDateIndividu;
+    private TableColumn<Individual, String> colExpDateIndividu;
 
     @FXML
-    private TableView<?> tblShowIndividu;
+    private TableView<Individual> tblShowIndividu;
 
     @FXML
-    private TableColumn<?, ?> colShowIDIndividu;
+    private TableColumn<Individual, Integer> colShowIDIndividu;
 
     @FXML
-    private TableColumn<?, ?> colShowNamaIndividu;
+    private TableColumn<Individual, String> colShowNamaIndividu;
 
     @FXML
-    private TableColumn<?, ?> colShowExpDateIndividu;
+    private TableColumn<Individual, String> colShowExpDateIndividu;
 
     @FXML
     private TextField tfIDIndividu2;
@@ -118,34 +128,34 @@ public class MemberFormController implements Initializable {
     private TextField tfApartmentNumOwner;
 
     @FXML
-    private TableView<?> tblMemberOwner;
+    private TableView<ApartementOwner> tblMemberOwner;
 
     @FXML
-    private TableColumn<?, ?> colIDOwner;
+    private TableColumn<ApartementOwner, Integer> colIDOwner;
 
     @FXML
-    private TableColumn<?, ?> colNameOwner;
+    private TableColumn<ApartementOwner, String> colNameOwner;
 
     @FXML
-    private TableColumn<?, ?> colPhoneNumOwner;
+    private TableColumn<ApartementOwner, Long> colPhoneNumOwner;
 
     @FXML
-    private TableColumn<?, ?> colApartmentNumOwner;
+    private TableColumn<ApartementOwner, Integer> colApartmentNumOwner;
 
     @FXML
-    private TableColumn<?, ?> colExpDateOwner;
+    private TableColumn<ApartementOwner, String> colExpDateOwner;
 
     @FXML
-    private TableView<?> tblShowOwner;
+    private TableView<ApartementOwner> tblShowOwner;
 
     @FXML
-    private TableColumn<?, ?> colShowIDOwner;
+    private TableColumn<ApartementOwner, Integer> colShowIDOwner;
 
     @FXML
-    private TableColumn<?, ?> colShowNameOwner2;
+    private TableColumn<ApartementOwner, String> colShowNameOwner2;
 
     @FXML
-    private TableColumn<?, ?> tblShowExpDateOwner2;
+    private TableColumn<ApartementOwner, String> tblShowExpDateOwner2;
 
     @FXML
     private TextField tfIDOwner2;
@@ -158,49 +168,91 @@ public class MemberFormController implements Initializable {
 
     @FXML
     private Label labelDBStatus;
-    
+
     @FXML
     private Label labelSetStatusIndividual;
 
+    @FXML
+    private Label labelSetStatusOwner;
+
     MemberDataModel MDM;
+
+    @FXML
+    void handleCloseProgram(ActionEvent event) {
+        System.exit(0);
+    }
     
     @FXML
     void handleClearIndividu(ActionEvent event) {
-
+        try {
+            tfIDIndividual.setText("" + MDM.nextMemberID());
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        LocalDate BD = dpBirthdateIndividu.getValue();
+        String birthdate = String.format("%d-%02d-%02d", BD.getYear(), BD.getMonthValue(), BD.getDayOfMonth());
+        LocalDate EXP = dpExpDateIndividu.getValue();
+        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(), EXP.getMonthValue(), EXP.getDayOfMonth());
+        tfIDIndividual.setDisable(true);
+        tfNamaLengkapIndividu.setText("");
+        tfPhoneNumIndividu.setText("");
+        labelSetStatusIndividual.setText("");
+        tfIDIndividu2.setDisable(true);
+        btnSaveIndividu2.setDisable(true);
     }
 
     @FXML
     void handleClearOwner(ActionEvent event) {
-
+        try {
+            tfIDOwner.setText("" + MDM.nextMemberOwnerID());
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        LocalDate EXP = dpExpDateOwner.getValue();
+        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(), EXP.getMonthValue(), EXP.getDayOfMonth());
+        tfIDOwner.setDisable(true);
+        tfNameOwner.setText("");
+        tfPhoneNumOwner.setText("");
+        tfApartmentNumOwner.setText("");
+        labelSetStatusOwner.setText("");
+        tfIDOwner2.setDisable(true);
+        btnSaveOwner2.setDisable(true);
     }
 
     @FXML
     void handleReloadIndividu(ActionEvent event) {
-//        ObservableList<Individual> data = MDM.getIndividual();
-//        idColumn.setCellValueFactory(new PropertyValueFactory<>("holderID"));
-//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-//        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-//        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
-//        bdColumn.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
-//        numAccColumn.setCellValueFactory(new PropertyValueFactory<>("numAccounts"));
-//        tblAccountHolder.setItems(null);
-//        tblAccountHolder.setItems(data);
-//        btnAddAccount.setDisable(true);
+        ObservableList<Individual> akun = MDM.getIndividual();
+        colIDIIndividu.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNamaLengkapIndividu.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPhoneNumIndividu.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
+        colBirthdateIndividu.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        colExpDateIndividu.setCellValueFactory(cellData -> cellData.getValue().membership.expirationDateProperty());
+        tblMemberIndividu.setItems(null);
+        tblMemberIndividu.setItems(akun);
+        btnSaveIndividu2.setDisable(true);
     }
 
     @FXML
     void handleReloadOwner(ActionEvent event) {
-
+        ObservableList<ApartementOwner> akun = MDM.getApartementOwner();
+        colIDOwner.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNameOwner.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPhoneNumOwner.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
+        colApartmentNumOwner.setCellValueFactory(new PropertyValueFactory<>("apartementnum"));
+        colExpDateOwner.setCellValueFactory(cellData -> cellData.getValue().membership.expirationDateProperty());
+        tblMemberOwner.setItems(null);
+        tblMemberOwner.setItems(akun);
+        btnSaveOwner2.setDisable(true);
     }
 
     @FXML
     void handleSaveIndividu(ActionEvent event) {
         LocalDate BD = dpBirthdateIndividu.getValue();
-        String birthdate = String.format("%d-%02d-%02d", BD.getYear(),BD.getMonthValue(),BD.getDayOfMonth());
+        String birthdate = String.format("%d-%02d-%02d", BD.getYear(), BD.getMonthValue(), BD.getDayOfMonth());
         LocalDate EXP = dpExpDateIndividu.getValue();
-        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(),EXP.getMonthValue(),EXP.getDayOfMonth());
+        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(), EXP.getMonthValue(), EXP.getDayOfMonth());
         Individual member = new Individual(Integer.parseInt(tfIDIndividual.getText()),
-                tfNamaLengkapIndividu.getText(), 
+                tfNamaLengkapIndividu.getText(),
                 Long.parseLong(tfPhoneNumIndividu.getText()),
                 birthdate,
                 new Membership(ExpirationDate));
@@ -213,35 +265,99 @@ public class MemberFormController implements Initializable {
             Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @FXML
-    void handleSaveIndividu2(ActionEvent event) {
-
+    void handleSaveIndividu2(ActionEvent event) throws SQLException {
+        LocalDate BD = dpBirthdateIndividu.getValue();
+        String birthdate = String.format("%d-%02d-%02d", 
+                BD.getYear(), 
+                BD.getMonthValue(), 
+                BD.getDayOfMonth());
+        LocalDate EXP = dpExpDateIndividu2.getValue();
+        String ExpirationDate = String.format("%d-%02d-%02d", 
+                EXP.getYear(), 
+                EXP.getMonthValue(), 
+                EXP.getDayOfMonth());
+        Individual member = new Individual(Integer.parseInt(tfIDIndividual.getText()),
+                tfNamaLengkapIndividu.getText(),
+                Long.parseLong(tfPhoneNumIndividu.getText()),
+                birthdate,
+                new Membership(ExpirationDate));
+        MDM.renewMembership(member);
+//        try {
+//            ObservableList<Individual> akun = MDM.getIndividual();
+//            loadMembership(tblMemberIndividu.getSelectionModel().getSelectedItem().getId());
+//            MDM.setExpirationDate(dpExpDateIndividu2);
+//            Individual member = new Individual(Integer.parseInt(tfIDIndividu2.getText()),
+//                tfNamaLengkapIndividu.getText(),
+//                Long.parseLong(tfPhoneNumIndividu.getText()),
+//                birthdate,
+//                new Membership(ExpirationDate));
+//            
+//            loadDataAccount(tblAccountHolder.getSelectionModel().getSelectedItem().getHolderID());
+//            tfNewAccBalance.setText("");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountHolderFormController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @FXML
     void handleSaveOwner(ActionEvent event) {
-
+        LocalDate EXP = dpExpDateOwner.getValue();
+        String ExpirationDate = String.format("%d-%02d-%02d", EXP.getYear(), EXP.getMonthValue(), EXP.getDayOfMonth());
+        ApartementOwner member = new ApartementOwner(Integer.parseInt(tfIDOwner.getText()),
+                tfNameOwner.getText(),
+                Long.parseLong(tfPhoneNumOwner.getText()),
+                Integer.parseInt(tfApartmentNumOwner.getText()),
+                new Membership(ExpirationDate));
+        try {
+            MDM.addMember(member);
+            labelSetStatusOwner.setText("Berhasil Menambah Member");
+            btnReloadOwner.fire();
+        } catch (SQLException ex) {
+            labelSetStatusOwner.setText("Gagal Menambah Member");
+            Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     void handleSaveOwner2(ActionEvent event) {
 
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             MDM = new MemberDataModel();
-            labelDBStatus.setText(MDM.conn==null?"Not Connected":"Connected");
-            tfIDIndividual.setText(""+MDM.nextMemberID());
-            dpExpDateIndividu.setValue(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), 
+            labelDBStatus.setText(MDM.conn == null ? "Not Connected" : "Connected");
+            tfIDIndividual.setText("" + MDM.nextMemberID());
+            dpExpDateIndividu.setValue(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(),
                     LocalDate.now().getDayOfMonth()));
-            dpBirthdateIndividu.setValue(LocalDate.of(LocalDate.now().getYear()-27, LocalDate.now().getMonthValue(), 
+            dpBirthdateIndividu.setValue(LocalDate.of(LocalDate.now().getYear() - 27, LocalDate.now().getMonthValue(),
                     LocalDate.now().getDayOfMonth()));
+            btnReloadIndividu.fire();
         } catch (SQLException ex) {
             Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-    
+
+        tblMemberIndividu.getSelectionModel().selectedIndexProperty().addListener(listener -> {
+            if (tblMemberIndividu.getSelectionModel().getSelectedItem() != null) {
+                Individual akun = tblMemberIndividu.getSelectionModel().getSelectedItem();
+            }
+        });
+
+        try {
+            tfIDOwner.setText(""+MDM.nextMemberOwnerID());
+            dpExpDateOwner.setValue(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), 
+                    LocalDate.now().getDayOfMonth()));
+            btnReloadOwner.fire();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tblMemberOwner.getSelectionModel().selectedIndexProperty().addListener(listener -> {
+            if (tblMemberOwner.getSelectionModel().getSelectedItem() != null) {
+                ApartementOwner akunn = tblMemberOwner.getSelectionModel().getSelectedItem();
+            }
+        });
+    }
 }
