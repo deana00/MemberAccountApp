@@ -243,7 +243,9 @@ public class MemberFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tblMemberIndividu.setEditable(true);
+        tblMemberOwner.setEditable(true);
         colExpDateIndividu.setCellFactory(TextFieldTableCell.forTableColumn());
+        colExpDateOwner.setCellFactory(TextFieldTableCell.forTableColumn());
         
         
         try {
@@ -281,6 +283,11 @@ public class MemberFormController implements Initializable {
     }
     public void editExpDate(CellEditEvent eddittedcell) throws SQLException{
         Member memberselected = tblMemberIndividu.getSelectionModel().getSelectedItem();
+        memberselected.getMembership().setExpirationDate(eddittedcell.getNewValue().toString());
+        MDM.renewMembership(memberselected);
+    }
+    public void editExpDateOwner(CellEditEvent eddittedcell) throws SQLException{
+        Member memberselected = tblMemberOwner.getSelectionModel().getSelectedItem();
         memberselected.getMembership().setExpirationDate(eddittedcell.getNewValue().toString());
         MDM.renewMembership(memberselected);
     }
