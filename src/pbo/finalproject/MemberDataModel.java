@@ -116,12 +116,13 @@ public class MemberDataModel {
         return akun;
     }
     
-    public void renewMembership(Individual holder) throws SQLException {
-        String updateExpDate = "UPDATE membership (expiration_date)"
-                + " VALUES (?)";
+    public void renewMembership(Member holder) throws SQLException {
+        String updateExpDate = "UPDATE membership SET expiration_date = ?"
+                + " WHERE id = ? ";
         
         PreparedStatement stmtRenew = conn.prepareStatement(updateExpDate);
         stmtRenew.setString(1, holder.membership.getExpirationDate());
+        stmtRenew.setInt(2, holder.getId());
         stmtRenew.execute();
     }
 //    public ObservableList<Membership> getMemberships(int holderID){

@@ -8,7 +8,6 @@ package pbo.finalproject;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,15 +20,18 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 /**
  *
  * @author CIKA
  */
 public class MemberFormController implements Initializable {
+    
 
     @FXML
     private MenuItem file_close;
@@ -83,27 +85,6 @@ public class MemberFormController implements Initializable {
     private TableColumn<Individual, String> colExpDateIndividu;
 
     @FXML
-    private TableView<Individual> tblShowIndividu;
-
-    @FXML
-    private TableColumn<Individual, Integer> colShowIDIndividu;
-
-    @FXML
-    private TableColumn<Individual, String> colShowNamaIndividu;
-
-    @FXML
-    private TableColumn<Individual, String> colShowExpDateIndividu;
-
-    @FXML
-    private TextField tfIDIndividu2;
-
-    @FXML
-    private DatePicker dpExpDateIndividu2;
-
-    @FXML
-    private Button btnSaveIndividu2;
-
-    @FXML
     private TextField tfIDOwner;
 
     @FXML
@@ -146,27 +127,6 @@ public class MemberFormController implements Initializable {
     private TableColumn<ApartementOwner, String> colExpDateOwner;
 
     @FXML
-    private TableView<ApartementOwner> tblShowOwner;
-
-    @FXML
-    private TableColumn<ApartementOwner, Integer> colShowIDOwner;
-
-    @FXML
-    private TableColumn<ApartementOwner, String> colShowNameOwner2;
-
-    @FXML
-    private TableColumn<ApartementOwner, String> tblShowExpDateOwner2;
-
-    @FXML
-    private TextField tfIDOwner2;
-
-    @FXML
-    private DatePicker dpExpDateOwner2;
-
-    @FXML
-    private Button btnSaveOwner2;
-
-    @FXML
     private Label labelDBStatus;
 
     @FXML
@@ -197,8 +157,6 @@ public class MemberFormController implements Initializable {
         tfNamaLengkapIndividu.setText("");
         tfPhoneNumIndividu.setText("");
         labelSetStatusIndividual.setText("");
-        tfIDIndividu2.setDisable(true);
-        btnSaveIndividu2.setDisable(true);
     }
 
     @FXML
@@ -215,8 +173,6 @@ public class MemberFormController implements Initializable {
         tfPhoneNumOwner.setText("");
         tfApartmentNumOwner.setText("");
         labelSetStatusOwner.setText("");
-        tfIDOwner2.setDisable(true);
-        btnSaveOwner2.setDisable(true);
     }
 
     @FXML
@@ -229,7 +185,6 @@ public class MemberFormController implements Initializable {
         colExpDateIndividu.setCellValueFactory(cellData -> cellData.getValue().membership.expirationDateProperty());
         tblMemberIndividu.setItems(null);
         tblMemberIndividu.setItems(akun);
-        btnSaveIndividu2.setDisable(true);
     }
 
     @FXML
@@ -242,7 +197,6 @@ public class MemberFormController implements Initializable {
         colExpDateOwner.setCellValueFactory(cellData -> cellData.getValue().membership.expirationDateProperty());
         tblMemberOwner.setItems(null);
         tblMemberOwner.setItems(akun);
-        btnSaveOwner2.setDisable(true);
     }
 
     @FXML
@@ -260,45 +214,11 @@ public class MemberFormController implements Initializable {
             MDM.addMember(member);
             labelSetStatusIndividual.setText("Berhasil Menambah Member");
             btnReloadIndividu.fire();
+            btnClearFormIndividu.fire();
         } catch (SQLException ex) {
             labelSetStatusIndividual.setText("Gagal Menambah Member");
             Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    @FXML
-    void handleSaveIndividu2(ActionEvent event) throws SQLException {
-        LocalDate BD = dpBirthdateIndividu.getValue();
-        String birthdate = String.format("%d-%02d-%02d", 
-                BD.getYear(), 
-                BD.getMonthValue(), 
-                BD.getDayOfMonth());
-        LocalDate EXP = dpExpDateIndividu2.getValue();
-        String ExpirationDate = String.format("%d-%02d-%02d", 
-                EXP.getYear(), 
-                EXP.getMonthValue(), 
-                EXP.getDayOfMonth());
-        Individual member = new Individual(Integer.parseInt(tfIDIndividual.getText()),
-                tfNamaLengkapIndividu.getText(),
-                Long.parseLong(tfPhoneNumIndividu.getText()),
-                birthdate,
-                new Membership(ExpirationDate));
-        MDM.renewMembership(member);
-//        try {
-//            ObservableList<Individual> akun = MDM.getIndividual();
-//            loadMembership(tblMemberIndividu.getSelectionModel().getSelectedItem().getId());
-//            MDM.setExpirationDate(dpExpDateIndividu2);
-//            Individual member = new Individual(Integer.parseInt(tfIDIndividu2.getText()),
-//                tfNamaLengkapIndividu.getText(),
-//                Long.parseLong(tfPhoneNumIndividu.getText()),
-//                birthdate,
-//                new Membership(ExpirationDate));
-//            
-//            loadDataAccount(tblAccountHolder.getSelectionModel().getSelectedItem().getHolderID());
-//            tfNewAccBalance.setText("");
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AccountHolderFormController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     @FXML
@@ -320,13 +240,12 @@ public class MemberFormController implements Initializable {
         }
     }
 
-    @FXML
-    void handleSaveOwner2(ActionEvent event) {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tblMemberIndividu.setEditable(true);
+        colExpDateIndividu.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        
         try {
             MDM = new MemberDataModel();
             labelDBStatus.setText(MDM.conn == null ? "Not Connected" : "Connected");
@@ -356,8 +275,13 @@ public class MemberFormController implements Initializable {
         }
         tblMemberOwner.getSelectionModel().selectedIndexProperty().addListener(listener -> {
             if (tblMemberOwner.getSelectionModel().getSelectedItem() != null) {
-                ApartementOwner akunn = tblMemberOwner.getSelectionModel().getSelectedItem();
+                ApartementOwner akun = tblMemberOwner.getSelectionModel().getSelectedItem();
             }
         });
+    }
+    public void editExpDate(CellEditEvent eddittedcell) throws SQLException{
+        Member memberselected = tblMemberIndividu.getSelectionModel().getSelectedItem();
+        memberselected.getMembership().setExpirationDate(eddittedcell.getNewValue().toString());
+        MDM.renewMembership(memberselected);
     }
 }

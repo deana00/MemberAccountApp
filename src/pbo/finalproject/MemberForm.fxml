@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pbo.finalproject.MemberFormController">
+<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pbo.finalproject.MemberFormController">
    <children>
       <MenuBar layoutY="1.0">
         <menus>
@@ -36,17 +36,17 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane layoutY="26.0" minWidth="1280.0" prefHeight="693.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="26.0" minWidth="1114.0" prefHeight="558.0" prefWidth="1114.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Individual">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #343a40;">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="1091.0" style="-fx-background-color: #343a40;">
                      <children>
-                        <AnchorPane minWidth="264.0" prefHeight="664.0" prefWidth="309.0">
+                        <AnchorPane minWidth="264.0" prefHeight="529.0" prefWidth="309.0">
                            <children>
-                              <VBox prefHeight="663.0" prefWidth="305.0" style="-fx-background-color: #14213d;">
+                              <VBox prefHeight="529.0" prefWidth="305.0" style="-fx-background-color: #14213d;">
                                  <children>
-                                    <AnchorPane prefHeight="692.0" prefWidth="305.0">
+                                    <AnchorPane prefHeight="529.0" prefWidth="305.0">
                                        <children>
                                           <Label alignment="CENTER" layoutX="15.0" layoutY="11.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
                                              <font>
@@ -83,40 +83,22 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="309.0" prefHeight="424.0" prefWidth="952.0">
+                        <AnchorPane layoutX="309.0" prefHeight="424.0" prefWidth="804.0">
                            <children>
                               <Label layoutX="24.0" layoutY="6.0" prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Palatino Linotype" size="21.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="tblMemberIndividu" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                              <TableView fx:id="tblMemberIndividu" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="760.0">
                                 <columns>
-                                  <TableColumn fx:id="colIDIIndividu" prefWidth="115.888916015625" text="ID Member" />
-                                  <TableColumn fx:id="colNamaLengkapIndividu" prefWidth="223.0" text="Nama Lengkap" />
-                                    <TableColumn fx:id="colPhoneNumIndividu" prefWidth="208.888916015625" text="No. Handphone" />
-                                    <TableColumn fx:id="colBirthdateIndividu" prefWidth="157.6666259765625" text="Tanggal Lahir" />
-                                    <TableColumn fx:id="colExpDateIndividu" prefWidth="218.3333740234375" text="Expiration Date" />
+                                  <TableColumn fx:id="colIDIIndividu" prefWidth="101.77777099609375" text="ID Member" />
+                                  <TableColumn fx:id="colNamaLengkapIndividu" prefWidth="177.55548095703125" text="Nama Lengkap" />
+                                    <TableColumn fx:id="colPhoneNumIndividu" prefWidth="155.33331298828125" text="No. Handphone" />
+                                    <TableColumn fx:id="colBirthdateIndividu" prefWidth="148.55560302734375" text="Tanggal Lahir" />
+                                    <TableColumn fx:id="colExpDateIndividu" onEditCommit="#editExpDate" prefWidth="174.0" text="Expiration Date" />
                                 </columns>
                               </TableView>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
-                           <children>
-                              <TableView fx:id="tblShowIndividu" layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
-                                <columns>
-                                  <TableColumn fx:id="colShowIDIndividu" prefWidth="97.22225952148438" text="ID Member" />
-                                  <TableColumn fx:id="colShowNamaIndividu" prefWidth="119.66665649414062" text="Nama Lengkap" />
-                                    <TableColumn fx:id="colShowExpDateIndividu" prefWidth="112.0" text="Exp. Date" />
-                                </columns>
-                              </TableView>
-                              <TextField fx:id="tfIDIndividu2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                              <DatePicker fx:id="dpExpDateIndividu2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveIndividu2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveIndividu2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -131,9 +113,9 @@
                            <children>
                               <AnchorPane prefHeight="666.0" prefWidth="305.0">
                                  <children>
-                                    <Label layoutX="16.0" layoutY="7.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                    <Label layoutX="29.0" layoutY="14.0" prefHeight="45.0" prefWidth="249.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
                                        <font>
-                                          <Font size="30.0" />
+                                          <Font name="Goudy Old Style" size="30.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="tfIDOwner" disable="true" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
@@ -165,40 +147,22 @@
                               </AnchorPane>
                            </children>
                         </VBox>
-                        <AnchorPane layoutX="305.0" prefHeight="424.0" prefWidth="952.0">
+                        <AnchorPane layoutX="305.0" prefHeight="424.0" prefWidth="776.0">
                            <children>
                               <Label prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Apartment Owner" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font name="Palatino Linotype" size="21.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="tblMemberOwner" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="926.0">
+                              <TableView fx:id="tblMemberOwner" layoutX="22.0" layoutY="40.0" prefHeight="359.0" prefWidth="760.0">
                                  <columns>
-                                    <TableColumn fx:id="colIDOwner" prefWidth="115.888916015625" text="ID Member" />
-                                    <TableColumn fx:id="colNameOwner" prefWidth="223.0" text="Nama Lengkap" />
-                                    <TableColumn fx:id="colPhoneNumOwner" prefWidth="208.888916015625" text="No. Handphone" />
-                                    <TableColumn fx:id="colApartmentNumOwner" prefWidth="157.6666259765625" text="No. Apartmen" />
-                                    <TableColumn fx:id="colExpDateOwner" prefWidth="218.3333740234375" text="Expiration Date" />
+                                    <TableColumn fx:id="colIDOwner" prefWidth="149.22222900390625" text="ID Member" />
+                                    <TableColumn fx:id="colNameOwner" prefWidth="208.77777099609375" text="Nama Lengkap" />
+                                    <TableColumn fx:id="colPhoneNumOwner" prefWidth="124.22222900390625" text="No. Handphone" />
+                                    <TableColumn fx:id="colApartmentNumOwner" prefWidth="115.111083984375" text="No. Apartmen" />
+                                    <TableColumn fx:id="colExpDateOwner" prefWidth="162.111083984375" text="Expiration Date" />
                                  </columns>
                               </TableView>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="328.0" layoutY="424.0" prefHeight="218.0" prefWidth="929.0" style="-fx-background-color: #adb5bd;">
-                           <children>
-                              <TableView fx:id="tblShowOwner" layoutX="14.0" layoutY="9.0" prefHeight="200.0" prefWidth="331.0">
-                                 <columns>
-                                    <TableColumn fx:id="colShowIDOwner" prefWidth="97.22225952148438" text="ID Member" />
-                                    <TableColumn fx:id="colShowNameOwner2" prefWidth="119.66665649414062" text="Nama Lengkap" />
-                                    <TableColumn fx:id="tblShowExpDateOwner2" prefWidth="112.0" text="Exp. Date" />
-                                 </columns>
-                              </TableView>
-                              <TextField fx:id="tfIDOwner2" disable="true" layoutX="392.0" layoutY="23.0" prefHeight="33.0" prefWidth="275.0" promptText="ID Member" />
-                              <DatePicker fx:id="dpExpDateOwner2" layoutX="392.0" layoutY="69.0" prefHeight="33.0" prefWidth="275.0" promptText="Exp. Date" />
-                              <Button fx:id="btnSaveOwner2" layoutX="392.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleSaveOwner2" prefHeight="33.0" prefWidth="275.0" text="Renew Membership">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -207,7 +171,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Label layoutX="1049.0" layoutY="6.0" text="DB Status :" />
-      <Label fx:id="labelDBStatus" layoutX="1122.0" layoutY="6.0" />
+      <Label layoutX="891.0" layoutY="5.0" text="DB Status :" />
+      <Label fx:id="labelDBStatus" layoutX="953.0" layoutY="5.0" prefHeight="17.0" prefWidth="70.0" />
    </children>
 </AnchorPane>
