@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  * @author CIKA
  */
 public class Individual extends Member {
-    StringProperty birthdate;
+    private StringProperty birthdate;
 
     public Individual(int id, String name, long phonenum, String birthdate, Membership membership) {
         super(id, name, phonenum, membership);

@@ -214,7 +214,6 @@ public class MemberFormController implements Initializable {
             MDM.addMember(member);
             labelSetStatusIndividual.setText("Berhasil Menambah Member");
             btnReloadIndividu.fire();
-            btnClearFormIndividu.fire();
         } catch (SQLException ex) {
             labelSetStatusIndividual.setText("Gagal Menambah Member");
             Logger.getLogger(MemberFormController.class.getName()).log(Level.SEVERE, null, ex);

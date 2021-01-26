@@ -1,50 +1,101 @@
-### Class Diagram
+# Final Project Mata Kuliah Pemrograman Berorientasi Objek
+Nama Anggota Kelompok :
+- 1917051022 Hans Christian Herwanto 
+- 1917051024 Ardella Dean Awalia     
+- 1917051059 Raymond Faraz Yandika   
 
+## <br> Member Account Application
+---
+> Sistem untuk arsip data anggota suatu fasilitas apartemen (fitness/gym misalnya) yang berisi ID (nomor anggota), Nama Lengkap, Nomor Telepon, tanggal lahir, dan tanggal habis masa keanggotaan, dan nomor apartement (bagi anggota yang memiliki unit di apartemen tersebut). 
+---
+Librari dan Tools yang digunakan dalam project ini :
+- NetBeans IDE
+- sqlite-jdbc-3.34.0.jar
+- SQLite Studio
+- Scene Builder
+- Microsoft Visual Studio extensions :
+  - Markdown All in One
+  - Markdown Preview Enchanced
+  - Live Server
+
+# <br> Desain
+> Untuk melihat diagram di bawah, install plugin mermaid-diagram di  https://github.com/Redisrupt/mermaid-diagrams
+
+## <br> Class Diagram
+---
 ```mermaid
 classDiagram
     Member <|-- ApartementOwner
     Member <|-- Individual
     Member "1"--o"1" Membership : has
-    Member : +int id
-    Member : +String name
-    Member : +int phonenum
-    Member : +int()
-    class ApartementOwner{
-      +string apartementnum
+    class Member{
+      <<abstract>>
+    -int id
+    -String name
+    -int phonenum
+    +Membership membership
+    +getId()
+    +setId(int id)
+    +getName()
+    +setName(String name)
+    +getPhonenum()
+    +setPhonenum(long phonenum)
+    +getMembership()
+    +setMembership()
+    +idProperty()
+    +nameProperty()
+    +phonenumProperty()
     }
+
+    class ApartementOwner{
+      -string apartementnum
+      +getApartementnum()
+      +setApartementnum(int apartementnum)
+      +apartementnumProperty()
+    }
+
     class Individual{
       -string birthdate
+      +getBirthdate()
+      +setBirthdate(String birthdate)
+      +birthdateProperty()
     }
+
     class Membership{
       +string expirationdate
+      +getExpirationDate()
+      +setExpirationDate(String expirationDate)
+      +expirationDateProperty()
       +renewMembership(String update)
     }
             
 ```
 
-### ER Diagram
-
+## <br> ER Diagram
+---
 ```mermaid
 erDiagram
-          MEMBER ||--|| APARTEMENT-OWNER : is
-          MEMBER ||..|| INDIVIDUAL : is
-          MEMBER ||--|| MEMBERSHIP : "has"
-          MEMBER{
-            int id
-            string name
-            int phonenum
-          }
-          APARTEMENT-OWNER{
-            int apartementnum
-          }
-          INDIVIDUAL{
-            string birthdate
-          }
-          MEMBERSHIP{
-            string expirationdate
-          }
+    MEMBER ||--|| APARTEMENT-OWNER : is
+    MEMBER ||..|| INDIVIDUAL : is
+    MEMBER ||--|| MEMBERSHIP : "has"
+    MEMBER{
+      int id
+      string name
+      int phonenum
+    }
+    APARTEMENT-OWNER{
+      int apartementnum
+    }
+    INDIVIDUAL{
+      string birthdate
+    }
+    MEMBERSHIP{
+      string expirationdate
+    }
 ```
-### Design Class Diagram for JavaFX and Database
+
+## <br> Design Class Diagram for JavaFX and Database
+---
 ```mermaid
 classDiagram
     Member <|-- Individual
@@ -57,51 +108,70 @@ classDiagram
 
     class Member{
       <<abstract>>
-      #IntegerProperty id
-      #StringProperty name
-      #StringProperty phonenum
-      
-      +IntegerProperty nextID()
+      -int id
+      -String name
+      -int phonenum
+      +Membership membership
+      +getId()
+      +setId(int id)
+      +getName()
+      +setName(String name)
+      +getPhonenum()
+      +setPhonenum(long phonenum)
+      +getMembership()
+      +setMembership()
+      +idProperty()
+      +nameProperty()
+      +phonenumProperty()
     }
     
     class Individual{
-      -StringProperty birthdate
+      -string birthdate
+      +getBirthdate()
+      +setBirthdate(String birthdate)
+      +birthdateProperty()
     }
     class ApartementOwner{
-      -StringProperty apartementnum
+      -string apartementnum
+      +getApartementnum()
+      +setApartementnum(int apartementnum)
+      +apartementnumProperty()
     }
     class Membership{
-      -StringProperty expirationdate
+      +string expirationdate
+      +getExpirationDate()
+      +setExpirationDate(String expirationDate)
+      +expirationDateProperty()
       +renewMembership(String update)
     }
 
     class MemberDataModel{
         Connection conn
-        addMember()
-        getMemberships()
+        addMember(Individual holder)
+        addMember(Apartement holder)
+        getIndividual()
+        getApartementOwner()
+        renewMembership()
         nextMemberID()
-        nextMembershipNumber()
+        nextMemberOwnerID()
     }
 
     class MemberFormController{
         initialize()
+        handleCloseProgram()
         handleClearIndividu()
+        handleClearOwner()
         handleReloadIndividu()
         handleReloadOwner()
         handleSaveIndividu()
-        handleSaveIndividu2()
         handleSaveOwner()
-        handleSaveOwner2()
+        editExpDate()
+        editExpDateOwner()
+    }
 
-    }
     class DBConnection{
-        - String USERNAME
-        - String PASSWORD
-        - String DB
-        - String MYCONN
+        -String SQCONN
         getConnection()
-        getConnection(String driver)
         createTable();
-    }
-            
+    }          
 ```

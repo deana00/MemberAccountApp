@@ -13,7 +13,7 @@ import javafx.beans.property.SimpleIntegerProperty;
  * @author CIKA
  */
 public class ApartementOwner extends Member {
-    IntegerProperty apartementnum;
+    private IntegerProperty apartementnum;
 
     public ApartementOwner(int id, String name, long phonenum, int apartementnum, Membership membership) {
         super(id, name, phonenum, membership);

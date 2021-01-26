@@ -48,7 +48,7 @@
                                  <children>
                                     <AnchorPane prefHeight="529.0" prefWidth="305.0">
                                        <children>
-                                          <Label alignment="CENTER" layoutX="15.0" layoutY="11.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                          <Label alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font name="Goudy Old Style" size="30.0" />
                                              </font>
@@ -85,7 +85,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="309.0" prefHeight="424.0" prefWidth="804.0">
                            <children>
-                              <Label layoutX="24.0" layoutY="6.0" prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
+                              <Label layoutX="23.0" layoutY="6.0" prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Individual" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Palatino Linotype" size="21.0" />
                                  </font>
@@ -113,7 +113,7 @@
                            <children>
                               <AnchorPane prefHeight="666.0" prefWidth="305.0">
                                  <children>
-                                    <Label layoutX="29.0" layoutY="14.0" prefHeight="45.0" prefWidth="249.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="45.0" prefWidth="274.0" text="Membership System" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Goudy Old Style" size="30.0" />
                                        </font>
@@ -149,7 +149,7 @@
                         </VBox>
                         <AnchorPane layoutX="305.0" prefHeight="424.0" prefWidth="776.0">
                            <children>
-                              <Label prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Apartment Owner" textAlignment="CENTER" textFill="WHITE">
+                              <Label layoutX="23.0" layoutY="6.0" prefHeight="17.0" prefWidth="633.0" text="Tabel Data Member Apartment Owner" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Palatino Linotype" size="21.0" />
                                  </font>
